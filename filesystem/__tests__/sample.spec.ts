@@ -19,16 +19,6 @@ describe('Object.getPrototypeOf', (): void => {
       expect(Object.getPrototypeOf(json) === Object.prototype).toBe(true);
     });
   
-    it('should work when using a fetch result', async (): Promise<void> => {
-      expect.assertions(1);
-  
-      const response: Response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-  
-      const json: unknown = await response.json();
-  
-      expect(Object.getPrototypeOf(json) === Object.prototype).toBe(true);
-    });
-
     it('should work with instanceof Object', async (): Promise<void> => {
         expect.assertions(1);
 
