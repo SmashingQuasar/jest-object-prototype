@@ -1,0 +1,11 @@
+node_modules
+yarn-error.log
+lib
+coverage
+app-version.json
+.env
+.DS_Store
+.idea
+newrelic_agent.log
+
+reports

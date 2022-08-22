@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  backend:
+    container_name: jest-object-prototype
+    hostname: jest-object-prototype
+    build:
+        context: ./app
+        dockerfile: Dockerfile
+    image: personal/jest-object-prototype
+    working_dir: /home/node/app
+    volumes:
+      - "../filesystem:/home/node/app"
