@@ -1,4 +1,4 @@
-describe('test', (): void => {
+describe('Object.getPrototypeOf', (): void => {
     it('works fine with a regular anonymous object', (): void => {
       expect.assertions(1);
   
@@ -11,15 +11,15 @@ describe('test', (): void => {
       expect(Object.getPrototypeOf(JSON.parse('{}')) === Object.prototype).toBe(true);
     });
   
-    it('does not work with Response.json()', async (): Promise<void> => {
+    it('should work with Response.json()', async (): Promise<void> => {
       expect.assertions(1);
   
-      const json: unknown = await new Response(JSON.stringify({})).json();
+      const json: unknown = await (new Response(JSON.stringify({}))).json();
   
       expect(Object.getPrototypeOf(json) === Object.prototype).toBe(true);
     });
   
-    it('does not work with fetch', async (): Promise<void> => {
+    it('should work when using a fetch result', async (): Promise<void> => {
       expect.assertions(1);
   
       const response: Response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
@@ -27,6 +27,14 @@ describe('test', (): void => {
       const json: unknown = await response.json();
   
       expect(Object.getPrototypeOf(json) === Object.prototype).toBe(true);
+    });
+
+    it('should work with instanceof Object', async (): Promise<void> => {
+        expect.assertions(1);
+
+        const json: unknown = await (new Response(JSON.stringify({}))).json();
+
+        expect(json instanceof Object).toBe(true);
     });
   });
   
